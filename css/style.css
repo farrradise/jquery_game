@@ -5,8 +5,10 @@ body {
   overflow: hidden; }
 
 main {
-  border: 1px solid white;
+  display: flex;
+  border: 2px solid white;
   height: 300px;
-  width: 550px; }
+  width: 550px;
+  margin: auto auto 0 auto; }
 
 /*# sourceMappingURL=style.css.map */

@@ -6,7 +6,12 @@ body {
 }
 
 main {
-  border : 1px solid white;
+  display: flex;
+  border : 2px solid white;
   height: 300px;
   width : 550px;
+  // position : fixed;
+  // bottom : 5px;
+  // margin-top : auto;
+  margin : auto auto 0 auto;
 }
