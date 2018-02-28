@@ -8,7 +8,7 @@ body {
   padding-top: calc(100vh - (50vh + 150px)); }
 
 main {
-  height: 300px;
+  height: 270px;
   width: 550px;
   background-color: rgba(244, 244, 244, 0.2);
   position: relative;
@@ -20,19 +20,31 @@ main {
     width: 100%;
     display: flex;
     flex-wrap: nowrap;
-    color: #57A2DC;
+    color: #328dd3;
     justify-content: space-around;
     text-align: center;
     font-size: 25px; }
     main .control > * {
       padding: 10px 0px; }
     main .control :hover, main .control :focus {
-      transition: 0.4s;
-      background-color: #57A2DC;
+      transition: 0.1s;
+      background-color: #328dd3;
       color: white; }
     main .control .left, main .control .right {
       flex-grow: 4; }
     main .control .instructions {
       flex-grow: 1; }
+  main .start {
+    height: 100%;
+    display: flex; }
+    main .start span {
+      color: white;
+      font-size: 40px;
+      margin: auto; }
+      main .start span .fa-play-circle {
+        -webkit-transition: 0.4s; }
+      main .start span .fa-play-circle:hover, main .start span .fa-play-circle:focus {
+        -webkit-transition: 0.4s;
+        color: #328dd3; }
 
 /*# sourceMappingURL=style.css.map */

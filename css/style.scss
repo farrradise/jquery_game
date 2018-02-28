@@ -1,4 +1,4 @@
-$blue : #57A2DC;
+$blue : rgb(50, 141, 211);
 
 body {
   background: url(../img/bg.jpg) fixed;
@@ -12,13 +12,11 @@ body {
 }
 
 main {
-  height: 300px;
+  height: 270px;
   width : 550px;
   background-color: rgba(244, 244, 244, 0.2);
   position : relative;
-  // bottom : 5px;
   margin : auto;
-  // margin-top : calc(100% + 350px)!important;
 
   .control {
     bottom : -50px;
@@ -37,7 +35,7 @@ main {
     }
 
     :hover, :focus {
-      transition: 0.4s;
+      transition: 0.1s;
       background-color: $blue;
       color : white;
     }
@@ -46,6 +44,24 @@ main {
     }
     .instructions {
       flex-grow: 1;
+    }
+  }
+
+  .start {
+    // border :1px solid red;
+    height: 100%;
+    display: flex;
+    span {
+      color: white;
+      font-size: 40px;
+      margin : auto;
+      .fa-play-circle {
+        -webkit-transition: 0.4s;
+      }
+      .fa-play-circle:hover, .fa-play-circle:focus  {
+        -webkit-transition: 0.4s;
+        color : $blue;
+      }
     }
   }
 }
