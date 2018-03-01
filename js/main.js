@@ -29,6 +29,22 @@ $(function(){
 
   // allow the shark to move
   // code here
+  $(document).keydown(function(e){
+    shark = parseInt($('.shark img').css('left'));
+
+    // if right arrow/keyboard
+    if (e.which == 37) {
+      if (shark > 0) {
+        $('.shark img').css('left', shark-20);
+      }
+    }
+    // if left arrow/keyboard
+    if (e.which == 39) {
+      if (shark < 420) {
+        $('.shark img').css('left', shark+20);
+      }
+    }
+  });
 
 });
 

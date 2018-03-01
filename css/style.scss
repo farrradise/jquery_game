@@ -55,11 +55,11 @@ main {
   }
 
   .start {
-    // border :1px solid red;
     height: 100%;
     display: flex;
     span {
       color: white;
+      z-index: 2;
       font-size: 40px;
       margin : auto;
       .fa-play-circle {
@@ -73,7 +73,8 @@ main {
   }
 
   .shark img {
-    width : 100px;
+    z-index: 1;
+    width : 80px;
     position: absolute;
     bottom : 0px;
   }
