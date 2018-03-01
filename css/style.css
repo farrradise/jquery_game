@@ -44,6 +44,7 @@ main {
     display: flex; }
     main .start span {
       color: white;
+      z-index: 2;
       font-size: 40px;
       margin: auto; }
       main .start span .fa-play-circle {
@@ -52,7 +53,8 @@ main {
         -webkit-transition: 0.4s;
         color: #328dd3; }
   main .shark img {
-    width: 100px;
+    z-index: 1;
+    width: 80px;
     position: absolute;
     bottom: 0px; }
 
