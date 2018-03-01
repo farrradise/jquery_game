@@ -6,6 +6,11 @@ body {
   display: flex;
   flex-flow: column nowrap;
   padding-top: calc(100vh - (50vh + 150px)); }
+  body img[alt="bubbles"] {
+    width: 30px;
+    position: absolute;
+    top: 100vh;
+    border: 1px solid red; }
 
 main {
   height: 270px;
