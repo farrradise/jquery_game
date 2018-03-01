@@ -1,11 +1,18 @@
 $(function(){
 
+  //bubbles when doc is ready
+  $('body').prepend("<img src='img/bulle_1.png' alt='bubbles'>")
+  // ajouter une image toutes les 1500ms
+  // image au hasard entre 1 et 4
+   
+
   // start the game on click play
   $('.start').click(function (){
     $('.start span').fadeOut(350,
       function(){
         $(this).remove();
         $(".start").html('<span></span>');
+        $(".start span").addClass('test');
 
         startFadeOut();
     });
@@ -30,9 +37,11 @@ function startFadeOut() {
      } else {
        $(".start").fadeOut(1450, function () {
          setTimeout(function() {
-           $(this).remove();
+           $(".start").remove();
          }, 750);
+
          // mettre ici appel au demarrage du jeu
+         alert('test');
        });
      }
      index++;
