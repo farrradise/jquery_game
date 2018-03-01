@@ -1,36 +1,17 @@
+// variables
+var index = 0;
+var screenWidth = $(document).width();
+var screenHeight = $(document).height();
+var bubbles = ['bulle_1', 'bulle_2', 'bulle_3', 'bulle_4'];
+var countBubble = 0;
+
+
+
 $(function(){
 
-  var screenWidth = $(document).width(), bubbles = ['bulle_1', 'bulle_2', 'bulle_3', 'bulle_4'];
-  var countBubble = 0;
 
   //bubbles when doc is ready
-  setInterval(function(){
-    var imgBubble = bubbles[Math.floor(Math.random()*bubbles.length)];
-    var randomLeft = Math.floor(Math.random()*screenWidth);
-    $('body').prepend("<img src='img/"+imgBubble+".png' alt='bubbles'>");
-
-    var lastImg = $('body > img:first-of-type');
-    lastImg.offset( {left: randomLeft });
-    lastImg.animate( 7000, function () {
-      $(this).css({'top', -=100vh;'});
-    });
-    // lastImg.offset().left(400);
-    // $('body > img:first-of-type').animate(3500, function() {
-      // $(this).css('top', '100vh');
-      // $(this).css('border', '3px solid yellow');
-    // });
-
-    // xImg = $('body img').offset().
-    // $('body img').animate({params},speed,callback);;
-    // alert(xImg.left);
-    // alert(countBubble);
-    // countBubble++;
-
-  }, 200);
-  // ajouter une image toutes les 1500ms
-  // image au hasard entre 1 et 4
-  // css mettre un position absolute top - 40px
-  // prendre un left au hasard par rapport à la window
+  setInterval(function(){ bubble(); }, 200);
 
 
   // start the game on click play
@@ -44,9 +25,13 @@ $(function(){
         startFadeOut();
     });
   });
+
+
+  // allow the shark to move
+  // code here
+
 });
 
-var index = 0;
 
 
 
@@ -54,9 +39,7 @@ function startFadeOut() {
 
   var startGame = [3, 2, 1, "START"];
   setTimeout(function () {
-    $(".start span").fadeIn(300, function () {
-      // $('start span').delay(500).fadeOut(500);
-    }).delay(900).fadeOut(300);
+    $(".start span").fadeIn(300).delay(900).fadeOut(300);
     $(".start span").text(startGame[index]);
 
      if (index != startGame.length - 1) {
@@ -73,4 +56,23 @@ function startFadeOut() {
      }
      index++;
   }, 1500)
+}
+
+
+function bubble() {
+  var imgBubble = bubbles[Math.floor(Math.random()*bubbles.length)];
+  var randomLeft = Math.floor(Math.random()*screenWidth);
+  $('body').prepend("<img src='img/"+imgBubble+".png' alt='bubbles'>");
+
+  var lastImg = $('body > img:first-of-type');
+  lastImg.offset( {left: randomLeft });
+
+  // bubble speed
+  if (screenHeight < 300) {
+    lastImg.animate({top : '-=120vh'}, 2000, function(){$(this).remove();});
+  } else if ( screenHeight < 500) {
+    lastImg.animate({top : '-=120vh'}, 8000, function(){$(this).remove();});
+  } else {
+    lastImg.animate({top : '-=120vh'}, 12000, function(){$(this).remove();});
+  }
 }

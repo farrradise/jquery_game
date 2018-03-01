@@ -5,17 +5,17 @@ body {
   overflow: hidden;
   display: flex;
   flex-flow: column nowrap;
-  padding-top: calc(100vh - (50vh + 150px)); }
+  padding-top: calc(100vh - (50vh + 150px));
+  font-family: sans-serif; }
   body img[alt="bubbles"] {
     width: 30px;
     position: absolute;
-    top: 100vh;
-    border: 1px solid red; }
+    top: 100vh; }
 
 main {
   height: 270px;
-  width: 550px;
-  background-color: rgba(244, 244, 244, 0.2);
+  width: 500px;
+  background-color: rgba(244, 244, 244, 0.1);
   position: relative;
   margin: auto; }
   main .control {
@@ -51,5 +51,9 @@ main {
       main .start span .fa-play-circle:hover, main .start span .fa-play-circle:focus {
         -webkit-transition: 0.4s;
         color: #328dd3; }
+  main .shark img {
+    width: 100px;
+    position: absolute;
+    bottom: 0px; }
 
 /*# sourceMappingURL=style.css.map */
