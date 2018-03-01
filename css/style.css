@@ -2,13 +2,58 @@ body {
   background: url(../img/bg.jpg) fixed;
   max-height: 100vh;
   max-width: 100vw;
-  overflow: hidden; }
+  overflow: hidden;
+  display: flex;
+  flex-flow: column nowrap;
+  padding-top: calc(100vh - (50vh + 150px));
+  font-family: sans-serif; }
+  body img[alt="bubbles"] {
+    width: 30px;
+    position: absolute;
+    top: 100vh; }
 
 main {
-  display: flex;
-  border: 2px solid white;
-  height: 300px;
-  width: 550px;
-  margin: auto auto 0 auto; }
+  height: 270px;
+  width: 500px;
+  background-color: rgba(244, 244, 244, 0.1);
+  position: relative;
+  margin: auto; }
+  main .control {
+    bottom: -50px;
+    position: absolute;
+    background-color: rgba(244, 244, 244, 0.85);
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    color: #328dd3;
+    justify-content: space-around;
+    text-align: center;
+    font-size: 25px; }
+    main .control > * {
+      padding: 10px 0px; }
+    main .control :hover, main .control :focus {
+      transition: 0.1s;
+      background-color: #328dd3;
+      color: white; }
+    main .control .left, main .control .right {
+      flex-grow: 4; }
+    main .control .instructions {
+      flex-grow: 1; }
+  main .start {
+    height: 100%;
+    display: flex; }
+    main .start span {
+      color: white;
+      font-size: 40px;
+      margin: auto; }
+      main .start span .fa-play-circle {
+        -webkit-transition: 0.4s; }
+      main .start span .fa-play-circle:hover, main .start span .fa-play-circle:focus {
+        -webkit-transition: 0.4s;
+        color: #328dd3; }
+  main .shark img {
+    width: 100px;
+    position: absolute;
+    bottom: 0px; }
 
 /*# sourceMappingURL=style.css.map */

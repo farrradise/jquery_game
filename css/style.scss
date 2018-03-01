@@ -1,17 +1,80 @@
+$blue : rgb(50, 141, 211);
+
 body {
   background: url(../img/bg.jpg) fixed;
   max-height : 100vh;
   max-width : 100vw;
   overflow: hidden;
+  display : flex;
+  flex-flow: column nowrap;
+  padding-top : calc(100vh - (50vh + 150px));
+  font-family: sans-serif;
+
+  img[alt="bubbles"] {
+    width: 30px;
+    position: absolute;
+    top : 100vh;
+  }
+
 }
 
 main {
-  display: flex;
-  border : 2px solid white;
-  height: 300px;
-  width : 550px;
-  // position : fixed;
-  // bottom : 5px;
-  // margin-top : auto;
-  margin : auto auto 0 auto;
+  height: 270px;
+  width : 500px;
+  background-color: rgba(244, 244, 244, 0.1);
+  position : relative;
+  margin : auto;
+
+  .control {
+    bottom : -50px;
+    position: absolute;
+    background-color: rgba(244, 244, 244, 0.85);
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    color : $blue;
+    justify-content: space-around;
+    text-align: center;
+    font-size: 25px;
+
+    >* {
+      padding: 10px 0px;
+    }
+
+    :hover, :focus {
+      transition: 0.1s;
+      background-color: $blue;
+      color : white;
+    }
+    .left, .right {
+      flex-grow: 4;
+    }
+    .instructions {
+      flex-grow: 1;
+    }
+  }
+
+  .start {
+    // border :1px solid red;
+    height: 100%;
+    display: flex;
+    span {
+      color: white;
+      font-size: 40px;
+      margin : auto;
+      .fa-play-circle {
+        -webkit-transition: 0.4s;
+      }
+      .fa-play-circle:hover, .fa-play-circle:focus  {
+        -webkit-transition: 0.4s;
+        color : $blue;
+      }
+    }
+  }
+
+  .shark img {
+    width : 100px;
+    position: absolute;
+    bottom : 0px;
+  }
 }
