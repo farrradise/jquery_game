@@ -5,7 +5,7 @@ var screenHeight = $(document).height();
 var startGame = [3, 2, 1, "START"];
 var bubbles = ['bulle_1', 'bulle_2', 'bulle_3', 'bulle_4'];
 var countBubble = 0;
-var fish, trash;
+var fish, trash, direction;
 var speed = 8000;
 var level = 0;
 
@@ -28,19 +28,25 @@ $(function(){
     });
   });
 
+  // trigger the event of shark movement
+  $('.control > div:not(.instructions)').click(function() {
+    direction = $(this).attr("class");
+    $(document).trigger('keydown', direction);
+  });
+
 
   // allow the shark to move
-  $(document).keydown(function(e){
+  $(document).keydown(function(e, direction){
     shark = parseInt($('.shark img').css('left'));
 
-    // if right arrow/keyboard
-    if (e.which == 37) {
+    // if left arrow/keyboard
+    if (e.which == 37 || direction == 'left') {
       if (shark > 0) {
         $('.shark img').css('left', shark-20);
       }
     }
-    // if left arrow/keyboard
-    if (e.which == 39) {
+    // if right arrow/keyboard
+    if (e.which == 39 || direction == 'right') {
       if (shark < 420) {
         $('.shark img').css('left', shark+20);
       }
@@ -71,7 +77,7 @@ function startFadeOut() {
          linterval = setInterval(function(){ gameIsStarted(); }, 4000 );
 
          //trash
-         setInterval(function(){ trashStarted(); }, 1000 );
+         setInterval(function(){ trashStarted(); }, 15000 );
        });
      }
      index++;
