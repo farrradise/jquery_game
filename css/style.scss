@@ -34,9 +34,11 @@ main {
 
     .poisson {
       position: absolute;
-      width : 50px;
+      // max-width : 50px;
+      height : 60px;
       top : -100px;
       left : 0px;
+      z-index: 4;
     }
   }
 
@@ -51,6 +53,7 @@ main {
     justify-content: space-around;
     text-align: center;
     font-size: 25px;
+    z-index: 6;
 
     >* {
       padding: 10px 0px;
@@ -91,6 +94,6 @@ main {
     z-index: 1;
     width : 80px;
     position: absolute;
-    bottom : 0px;
+    bottom : -6px;
   }
 }

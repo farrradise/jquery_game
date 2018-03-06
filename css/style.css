@@ -26,9 +26,10 @@ main {
     overflow: hidden; }
     main .surfaceGame .poisson {
       position: absolute;
-      width: 50px;
+      height: 60px;
       top: -100px;
-      left: 0px; }
+      left: 0px;
+      z-index: 4; }
   main .control {
     bottom: -50px;
     position: absolute;
@@ -39,7 +40,8 @@ main {
     color: #328dd3;
     justify-content: space-around;
     text-align: center;
-    font-size: 25px; }
+    font-size: 25px;
+    z-index: 6; }
     main .control > * {
       padding: 10px 0px; }
     main .control :hover, main .control :focus {
@@ -67,6 +69,6 @@ main {
     z-index: 1;
     width: 80px;
     position: absolute;
-    bottom: 0px; }
+    bottom: -6px; }
 
 /*# sourceMappingURL=style.css.map */

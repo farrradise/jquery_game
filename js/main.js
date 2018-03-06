@@ -5,8 +5,9 @@ var screenHeight = $(document).height();
 var startGame = [3, 2, 1, "START"];
 var bubbles = ['bulle_1', 'bulle_2', 'bulle_3', 'bulle_4'];
 var countBubble = 0;
-var fish;
+var fish, trash;
 var speed = 8000;
+var level = 0;
 
 $(function(){
 
@@ -29,7 +30,6 @@ $(function(){
 
 
   // allow the shark to move
-  // code here
   $(document).keydown(function(e){
     shark = parseInt($('.shark img').css('left'));
 
@@ -67,12 +67,11 @@ function startFadeOut() {
            $(".start").remove();
          }, 750);
 
-         // mettre ici appel au demarrage du jeu
-         setInterval(function(){ gameIsStarted(); }, 4000 );
-         setInterval(function(){ if (speed < 7900) {
-           setInterval(function(){ gameIsStarted(); }, 4000 );
-         } }, 2000 );
+         // game start HERE
+         linterval = setInterval(function(){ gameIsStarted(); }, 4000 );
 
+         //trash
+         setInterval(function(){ trashStarted(); }, 1000 );
        });
      }
      index++;
@@ -115,17 +114,43 @@ function gameIsStarted() {
   var offsetLeftLastFish = Math.floor(offsetLastFish.left);
   lastFish.offset({left : randomLeft + offsetLeftLastFish })
   lastFish.animate({top : '+=450'}, speed, function(){$(this).remove();});
-  if (speed > 1000) {
+  if (speed > 2000) {
     speed -= 50;
   }
-  // speed2 -=350;
-  // alert(speed2);
-  // meme principe que pour les bulles : faire un set interval MAIS un interval de plus en plus petit
-  // animer ce poisson pour qu'il descende jusqu'en bas de la surface de jeu div.surfaceGame
-  // le supprimer quand il n'est plus dans la surface de jeu
 
 
+  // Condition to check state of progress of the game. and adapt the speed of the interval
+  if ( speed < 6000 && level == 0) {
+    clearInterval(linterval);
+    level++;
+    linterval = setInterval(function(){ gameIsStarted(); }, 3000 );
+  } else if (speed < 4000 && level == 1) {
+    clearInterval(linterval);
+    level++;
+    linterval = setInterval(function(){ gameIsStarted(); }, 2000 );
+  } else if (speed < 2000 && level == 2) {
+    clearInterval(linterval);
+    level++;
+    linterval = setInterval(function(){ gameIsStarted(); }, 1000 );
+  }
+
+}
+
+
+function trashStarted () {
+  var randomLeft = Math.floor(Math.random()*450);
 
   // trashes
-  //meme principe que pour les poissons mais un autre set interval
+  if (trash == "trash_1") {
+    trash = 'trash_3';
+  }  else {
+    trash = 'trash_1';
+  }
+
+  $('main .surfaceGame').prepend("<img src='img/"+trash+".png' class=\"poisson\" alt='trash'>");
+  var lastTrash = $('main .surfaceGame img:first-of-type');
+  var offsetLastTrash = lastTrash.offset();
+  var offsetLeftLastTrash = Math.floor(offsetLastTrash.left);
+  lastTrash.offset({left : randomLeft + offsetLeftLastTrash })
+  lastTrash.animate({top : '+=450'}, speed, function(){$(this).remove();});
 }
