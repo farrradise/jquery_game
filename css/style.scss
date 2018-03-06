@@ -25,6 +25,23 @@ main {
   position : relative;
   margin : auto;
 
+  .surfaceGame {
+    height: 100%;
+    width: 100%;
+    position : absolute;
+    top : 0px;
+    overflow: hidden;
+
+    .poisson {
+      position: absolute;
+      // max-width : 50px;
+      height : 60px;
+      top : -100px;
+      left : 0px;
+      z-index: 4;
+    }
+  }
+
   .control {
     bottom : -50px;
     position: absolute;
@@ -36,6 +53,7 @@ main {
     justify-content: space-around;
     text-align: center;
     font-size: 25px;
+    z-index: 6;
 
     >* {
       padding: 10px 0px;
@@ -76,6 +94,6 @@ main {
     z-index: 1;
     width : 80px;
     position: absolute;
-    bottom : 0px;
+    bottom : -6px;
   }
 }
