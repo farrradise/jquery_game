@@ -25,6 +25,21 @@ main {
   position : relative;
   margin : auto;
 
+  .surfaceGame {
+    height: 100%;
+    width: 100%;
+    position : absolute;
+    top : 0px;
+    overflow: hidden;
+
+    .poisson {
+      position: absolute;
+      width : 50px;
+      top : -100px;
+      left : 0px;
+    }
+  }
+
   .control {
     bottom : -50px;
     position: absolute;
