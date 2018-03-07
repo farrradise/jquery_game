@@ -8,12 +8,12 @@ var countBubble = 0;
 var fish, trash, direction, sharkPos;
 var speed = 8000;
 var level = 0;
-
+var counterPoints = 0;
 $(function(){
 
 
   //bubbles when doc is ready
-  // setInterval(function(){ bubble(); }, 200);
+  setInterval(function(){ bubble(); }, 200);
 
 
   // start the game on click play
@@ -56,7 +56,7 @@ $(function(){
 
 
   // check if shark and fishes meet
-  setInterval(function(){ isEaten(); }, 350);
+  setInterval(function(){ isEaten(); }, 260);
 
 });
 
@@ -171,43 +171,36 @@ function trashStarted () {
 function isEaten () {
   // shark position
   sharkPosLeft = parseInt($('.shark img').css('left')) - 20; // +65
-  sharkPosBottom = parseInt($('.shark img').css('bottom')) + 10;
+  sharkPosBottom = parseInt($('.shark img').css('bottom'));
   var fishIsCounted = 0;
-  // console.log(sharkPosLeft);
-  // console.log(sharkPosBottom);
 
   // items position (loop)
   $('.surfaceGame img.notCounted').each(function(index){
     foodPosLeft = parseInt($(this).css('left')); // +65
     foodPosBottom = parseInt($(this).css('bottom'));
-    // var countedFood = $(this).hasClass('counted');
-    // console.log('la nourriture : '+ foodPosLeft + ' et ' + foodPosBottom);
 
-    if ((foodPosLeft > sharkPosLeft) && (foodPosLeft < (sharkPosLeft+55)) && (foodPosBottom > sharkPosBottom) && (foodPosBottom < (sharkPosBottom+40)) && fishIsCounted == 0) {
-      // if (!$(this).hasClass('counted')) {
-        $(this).clearQueue().animate({opacity : '0'}, 300, function() {
-          console.log('touché');
-          $(this).removeClass('notCounted');
-          // $(this).remove();
-          // mettre son
-          fishIsCounted++;
-          // points($(this));
-        });
-
-      // }
+    if ((foodPosLeft > sharkPosLeft) && (foodPosLeft < (sharkPosLeft+55)) && (foodPosBottom > sharkPosBottom) && (foodPosBottom < (sharkPosBottom+50))) {
+      $(this).clearQueue().animate({opacity : '0'}, 240, function() {
+        $(this).removeClass('notCounted');
+        // mettre son
+        points($(this));
+      });
     };
-
-
-    });
-
-  // si les deux se rencontrent
-  // si poisson 1 : x pts
-  // si poisson 2 : x pts
-  // si trash 1 : -x pts
-  // si trash 2 : -x pts
-
+  });
 }
 
 function points (img) {
-  alert('coucou');
+
+  if (img.attr('src') === "img/poisson1.png") {
+    counterPoints++;
+  } else if (img.attr('src') === "img/poisson2.png") {
+    counterPoints+=2;
+  } else if (img.attr('src') === "img/trash_3.png") {
+    counterPoints--;
+  } else {
+    counterPoints-=5;
+
+  }
+
+  $('.points span').text(counterPoints);
 }
