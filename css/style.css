@@ -20,8 +20,9 @@ main {
   margin: auto; }
   main .surfaceGame {
     height: 100%;
-    width: 100%;
+    width: calc(100% - 15px);
     position: absolute;
+    right: 0px;
     top: 0px;
     overflow: hidden; }
     main .surfaceGame .poisson {

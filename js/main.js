@@ -5,7 +5,7 @@ var screenHeight = $(document).height();
 var startGame = [3, 2, 1, "START"];
 var bubbles = ['bulle_1', 'bulle_2', 'bulle_3', 'bulle_4'];
 var countBubble = 0;
-var fish, trash, direction;
+var fish, trash, direction, sharkPos;
 var speed = 8000;
 var level = 0;
 
@@ -27,6 +27,7 @@ $(function(){
         startFadeOut();
     });
   });
+
 
   // trigger the event of shark movement
   $('.control > div:not(.instructions)').click(function() {
@@ -53,6 +54,10 @@ $(function(){
     }
   });
 
+
+  // check if shark and fishes meet
+  setInterval(function(){ isEaten(); }, 350);
+
 });
 
 
@@ -74,6 +79,7 @@ function startFadeOut() {
          }, 750);
 
          // game start HERE
+         gameIsStarted();
          linterval = setInterval(function(){ gameIsStarted(); }, 4000 );
 
          //trash
@@ -114,7 +120,7 @@ function gameIsStarted() {
     fish = 'poisson1';
   }
 
-  $('main .surfaceGame').prepend("<img src='img/"+fish+".png' class=\"poisson\" alt='fish'>");
+  $('main .surfaceGame').prepend("<img src='img/"+fish+".png' class=\"poisson notCounted\" alt='fish'>");
   var lastFish = $('main .surfaceGame img:first-of-type');
   var offsetLastFish = lastFish.offset();
   var offsetLeftLastFish = Math.floor(offsetLastFish.left);
@@ -153,10 +159,55 @@ function trashStarted () {
     trash = 'trash_1';
   }
 
-  $('main .surfaceGame').prepend("<img src='img/"+trash+".png' class=\"poisson\" alt='trash'>");
+  $('main .surfaceGame').prepend("<img src='img/"+trash+".png' class=\"poisson notCounted\" alt='trash'>");
   var lastTrash = $('main .surfaceGame img:first-of-type');
   var offsetLastTrash = lastTrash.offset();
   var offsetLeftLastTrash = Math.floor(offsetLastTrash.left);
   lastTrash.offset({left : randomLeft + offsetLeftLastTrash })
   lastTrash.animate({top : '+=450'}, speed, function(){$(this).remove();});
+}
+
+
+function isEaten () {
+  // shark position
+  sharkPosLeft = parseInt($('.shark img').css('left')) - 20; // +65
+  sharkPosBottom = parseInt($('.shark img').css('bottom')) + 10;
+  var fishIsCounted = 0;
+  // console.log(sharkPosLeft);
+  // console.log(sharkPosBottom);
+
+  // items position (loop)
+  $('.surfaceGame img.notCounted').each(function(index){
+    foodPosLeft = parseInt($(this).css('left')); // +65
+    foodPosBottom = parseInt($(this).css('bottom'));
+    // var countedFood = $(this).hasClass('counted');
+    // console.log('la nourriture : '+ foodPosLeft + ' et ' + foodPosBottom);
+
+    if ((foodPosLeft > sharkPosLeft) && (foodPosLeft < (sharkPosLeft+55)) && (foodPosBottom > sharkPosBottom) && (foodPosBottom < (sharkPosBottom+40)) && fishIsCounted == 0) {
+      // if (!$(this).hasClass('counted')) {
+        $(this).clearQueue().animate({opacity : '0'}, 300, function() {
+          console.log('touché');
+          $(this).removeClass('notCounted');
+          // $(this).remove();
+          // mettre son
+          fishIsCounted++;
+          // points($(this));
+        });
+
+      // }
+    };
+
+
+    });
+
+  // si les deux se rencontrent
+  // si poisson 1 : x pts
+  // si poisson 2 : x pts
+  // si trash 1 : -x pts
+  // si trash 2 : -x pts
+
+}
+
+function points (img) {
+  alert('coucou');
 }

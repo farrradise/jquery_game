@@ -27,8 +27,9 @@ main {
 
   .surfaceGame {
     height: 100%;
-    width: 100%;
+    width: calc(100% - 15px);
     position : absolute;
+    right : 0px;
     top : 0px;
     overflow: hidden;
 
@@ -91,6 +92,7 @@ main {
   }
 
   .shark img {
+    // border :1px solid white;
     z-index: 1;
     width : 80px;
     position: absolute;
