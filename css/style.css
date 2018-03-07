@@ -17,7 +17,8 @@ main {
   width: 500px;
   background-color: rgba(244, 244, 244, 0.1);
   position: relative;
-  margin: auto; }
+  margin: auto;
+  margin-top: -20px; }
   main .points {
     position: absolute;
     width: 500px;
