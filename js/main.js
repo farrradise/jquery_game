@@ -9,6 +9,7 @@ var fish, trash, direction, sharkPos;
 var speed = 8000;
 var level = 0;
 var counterPoints = 0;
+
 $(function(){
 
 
@@ -56,7 +57,7 @@ $(function(){
 
 
   // check if shark and fishes meet
-  setInterval(function(){ isEaten(); }, 260);
+  setInterval(function(){ isEaten(); }, 300);
 
 });
 
@@ -90,8 +91,8 @@ function startFadeOut() {
   }, 1500)
 }
 
-
 function bubble() {
+  var screenWidth =  $(document).width();
   var imgBubble = bubbles[Math.floor(Math.random()*bubbles.length)];
   var randomLeft = Math.floor(Math.random()*screenWidth);
   $('body').prepend("<img src='img/"+imgBubble+".png' alt='bubbles'>");
@@ -108,7 +109,6 @@ function bubble() {
     lastImg.animate({top : '-=120vh'}, 12000, function(){$(this).remove();});
   }
 }
-
 
 function gameIsStarted() {
   var randomLeft = Math.floor(Math.random()*450);
@@ -148,7 +148,6 @@ function gameIsStarted() {
 
 }
 
-
 function trashStarted () {
   var randomLeft = Math.floor(Math.random()*450);
 
@@ -166,7 +165,6 @@ function trashStarted () {
   lastTrash.offset({left : randomLeft + offsetLeftLastTrash })
   lastTrash.animate({top : '+=450'}, speed, function(){$(this).remove();});
 }
-
 
 function isEaten () {
   // shark position
@@ -204,3 +202,89 @@ function points (img) {
 
   $('.points span').text(counterPoints);
 }
+
+
+
+// FORCE THE LANDSCAPE VIEW ON MOBILE
+//
+// $(function() {
+//   //
+//   console.log('width : '+screenWidth);
+//   console.log('height : '+screenHeight);
+//   //
+//   $(window).bind("orientationchange", function(event) {
+//       // Announce the new orientation number
+//       console.log(window.orientation);
+//   }, false);
+//
+//   // if (screenWidth < 550 && (screenWidth < screenHeight)) {
+//   //   // jQuery(window).bind('orientationchange', function(e) {
+//   //   //   switch ( window.orientation ) {
+//   //   //     case 0:
+//   //   //     $('.turnDeviceNotification').css('display', 'none');
+//   //   //     // The device is in portrait mode now
+//   //   //     break;
+//   //   //
+//   //   //     case 180:
+//   //   //     $('.turnDeviceNotification').css('display', 'none');
+//   //   //     // The device is in portrait mode now
+//   //   //     break;
+//   //   //
+//   //   //     case 90:
+//   //   //     // The device is in landscape now
+//   //   //     $('.turnDeviceNotification').css('display', 'block');
+//   //   //     break;
+//   //   //
+//   //   //     case -90:
+//   //   //     // The device is in landscape now
+//   //   //     $('.turnDeviceNotification').css('display', 'block');
+//   //   //     break;
+//   //   //   }
+//   //   // });
+//   //   alert('smartphone');
+//   //
+//   // }
+//   // $(window).orientationchange();
+// });
+//
+
+
+
+
+//
+// $(function(){
+//     $( window ).on( "orientationchange", function( event ) {
+//     // $( "#orientation" ).text( "This device is in " + event.orientation + " mode!" );
+//     console.log(event.orientation);
+//   });
+//
+//   // You can also manually force this event to fire.
+//   $( window ).orientationchange();
+//   // if( orientation.type === "portrait-secondary" || orientation.type === "portrait-primary" && screenWidth < 550) {
+//   //    $('.turnDeviceNotification').css('display', 'block');
+//   // }
+//
+//   jQuery(window).bind('orientationchange', function(e) {
+//    switch ( window.orientation ) {
+//     case 0:
+//       $('.turnDeviceNotification').css('display', 'none');
+//       // The device is in portrait mode now
+//     break;
+//
+//     case 180:
+//       $('.turnDeviceNotification').css('display', 'none');
+//       // The device is in portrait mode now
+//     break;
+//
+//     case 90:
+//       // The device is in landscape now
+//       $('.turnDeviceNotification').css('display', 'block');
+//     break;
+//
+//     case -90:
+//       // The device is in landscape now
+//       $('.turnDeviceNotification').css('display', 'block');
+//     break;
+//    }
+//   });
+// });

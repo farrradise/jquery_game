@@ -28,11 +28,12 @@ main {
   .points {
     position: absolute;
     width: 500px;
-    top: -30px;
+    top: -35px;
     right : 0px;
     height: 30px!important;
     display: flex;
     p {
+      font-size: 25px;
       margin: auto;
       color : white;
       font-weight: bold;
@@ -111,5 +112,27 @@ main {
     width : 80px;
     position: absolute;
     bottom : -6px;
+  }
+}
+
+
+.turnDeviceNotification {
+  position:fixed;
+  top: 0;
+  left:0;
+  height:100%;
+  width:100%;
+  background-image:url('../img/rotate.png');
+  background-size:cover;
+  display: none;
+}
+
+@media (max-width: 540px) and (orientation : portrait) {
+  body main {
+    display : none;
+  }
+
+  .turnDeviceNotification {
+  display: block;
   }
 }
