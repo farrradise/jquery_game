@@ -19,17 +19,17 @@ body {
 }
 
 main {
-  height: 270px;
+  height: 250px;
   width : 500px;
   background-color: rgba(244, 244, 244, 0.1);
   position : relative;
   margin : auto;
-  margin-top : -20px;
+  margin-top : -10px;
 
   .points {
     position: absolute;
     width: 500px;
-    top: -35px;
+    top: 5px;
     right : 0px;
     height: 30px!important;
     display: flex;
