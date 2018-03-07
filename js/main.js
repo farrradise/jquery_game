@@ -31,7 +31,7 @@ $(function(){
 
 
   // trigger the event of shark movement
-  $('.control > div:not(.instructions)').mousedown(function() {
+  $('.control > div:not(.instructions)').click(function() {
     direction = $(this).attr("class");
     $(document).trigger('keydown', direction);
   });
@@ -202,6 +202,3 @@ function points (img) {
 
   $('.points span').text(counterPoints);
 }
-
-// 3 choses à faire
-// bug sur le comptage des points (parfois en boucle)
