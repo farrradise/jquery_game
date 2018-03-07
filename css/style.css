@@ -18,10 +18,23 @@ main {
   background-color: rgba(244, 244, 244, 0.1);
   position: relative;
   margin: auto; }
+  main .points {
+    position: absolute;
+    width: 500px;
+    top: -30px;
+    right: 0px;
+    height: 30px !important;
+    display: flex; }
+    main .points p {
+      margin: auto;
+      color: white;
+      font-weight: bold;
+      font-variant: small-caps; }
   main .surfaceGame {
     height: 100%;
-    width: 100%;
+    width: calc(100% - 15px);
     position: absolute;
+    right: 0px;
     top: 0px;
     overflow: hidden; }
     main .surfaceGame .poisson {
