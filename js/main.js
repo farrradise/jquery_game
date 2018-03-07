@@ -31,7 +31,7 @@ $(function(){
 
 
   // trigger the event of shark movement
-  $('.control > div:not(.instructions)').click(function() {
+  $('.control > div:not(.instructions)').mousedown(function() {
     direction = $(this).attr("class");
     $(document).trigger('keydown', direction);
   });
@@ -57,7 +57,7 @@ $(function(){
 
 
   // check if shark and fishes meet
-  setInterval(function(){ isEaten(); }, 300);
+  setInterval(function(){ isEaten(); }, 500);
 
 });
 
@@ -203,88 +203,5 @@ function points (img) {
   $('.points span').text(counterPoints);
 }
 
-
-
-// FORCE THE LANDSCAPE VIEW ON MOBILE
-//
-// $(function() {
-//   //
-//   console.log('width : '+screenWidth);
-//   console.log('height : '+screenHeight);
-//   //
-//   $(window).bind("orientationchange", function(event) {
-//       // Announce the new orientation number
-//       console.log(window.orientation);
-//   }, false);
-//
-//   // if (screenWidth < 550 && (screenWidth < screenHeight)) {
-//   //   // jQuery(window).bind('orientationchange', function(e) {
-//   //   //   switch ( window.orientation ) {
-//   //   //     case 0:
-//   //   //     $('.turnDeviceNotification').css('display', 'none');
-//   //   //     // The device is in portrait mode now
-//   //   //     break;
-//   //   //
-//   //   //     case 180:
-//   //   //     $('.turnDeviceNotification').css('display', 'none');
-//   //   //     // The device is in portrait mode now
-//   //   //     break;
-//   //   //
-//   //   //     case 90:
-//   //   //     // The device is in landscape now
-//   //   //     $('.turnDeviceNotification').css('display', 'block');
-//   //   //     break;
-//   //   //
-//   //   //     case -90:
-//   //   //     // The device is in landscape now
-//   //   //     $('.turnDeviceNotification').css('display', 'block');
-//   //   //     break;
-//   //   //   }
-//   //   // });
-//   //   alert('smartphone');
-//   //
-//   // }
-//   // $(window).orientationchange();
-// });
-//
-
-
-
-
-//
-// $(function(){
-//     $( window ).on( "orientationchange", function( event ) {
-//     // $( "#orientation" ).text( "This device is in " + event.orientation + " mode!" );
-//     console.log(event.orientation);
-//   });
-//
-//   // You can also manually force this event to fire.
-//   $( window ).orientationchange();
-//   // if( orientation.type === "portrait-secondary" || orientation.type === "portrait-primary" && screenWidth < 550) {
-//   //    $('.turnDeviceNotification').css('display', 'block');
-//   // }
-//
-//   jQuery(window).bind('orientationchange', function(e) {
-//    switch ( window.orientation ) {
-//     case 0:
-//       $('.turnDeviceNotification').css('display', 'none');
-//       // The device is in portrait mode now
-//     break;
-//
-//     case 180:
-//       $('.turnDeviceNotification').css('display', 'none');
-//       // The device is in portrait mode now
-//     break;
-//
-//     case 90:
-//       // The device is in landscape now
-//       $('.turnDeviceNotification').css('display', 'block');
-//     break;
-//
-//     case -90:
-//       // The device is in landscape now
-//       $('.turnDeviceNotification').css('display', 'block');
-//     break;
-//    }
-//   });
-// });
+// 3 choses à faire
+// bug sur le comptage des points (parfois en boucle)
